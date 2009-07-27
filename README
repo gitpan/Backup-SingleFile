@@ -1,0 +1,50 @@
+Backup-SingleFile
+
+This module can be used to copy one single file several times to the same 
+destination-directory without overwriting the destination. (Keeps the history)
+This is achived by postfixing the original filename with the date and a counter.
+
+Useful for backing up important files from mobile devices (f.e. track-file from GPS-receivers) to your computers hard-drive.
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+	perl Build.PL
+	./Build
+	./Build test
+	./Build install
+
+SUPPORT AND DOCUMENTATION
+
+After installing, you can find documentation for this module with the
+perldoc command.
+
+    perldoc Backup::SingleFile
+
+You can also look for information at:
+
+    RT, CPAN's request tracker
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Backup-SingleFile
+
+    AnnoCPAN, Annotated CPAN documentation
+        http://annocpan.org/dist/Backup-SingleFile
+
+    CPAN Ratings
+        http://cpanratings.perl.org/d/Backup-SingleFile
+
+    Search CPAN
+        http://search.cpan.org/dist/Backup-SingleFile/
+
+
+CONTACT
+
+Ingo LANTSCHNER, Email: perl [at] lantschner.name, Web http://ingo.lantschner.name
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2009 Ingo LANTSCHNER
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
