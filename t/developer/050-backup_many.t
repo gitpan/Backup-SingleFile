@@ -261,7 +261,7 @@ dir_is_empty($testroot) or die ("ERROR: Test-directory ($testroot) is NOT empty 
 		
 		rmtree ($sik_dir, {keep_root => 1});
 		
-		## Copy with strange (not allwed seperators)
+		## Copy with strange (not allwed seperators) - should fall back to undersocre and succeed
 		for my $strange_sep ( q{x}, q{,}, q{123}, q{FileAtWrongPosition.gpx}, q{SIK/Dir/at/wrong/Position}) {
 			my $return = backup("$file_name", $sik_dir, $now, $strange_sep) ;
 			is($return, 1, "Return-value must be 1 (Copy of $file with $strange_sep as seperator)");

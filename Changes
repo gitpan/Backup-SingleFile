@@ -3,3 +3,7 @@ Revision history for Backup-SingleFile
 0.01    2009-07-17
         First version, backups a file (as the name of this module says)
 
+0.02    2009-07-28 
+        Removed unnecessary use Smart::Comments in one of the modules (thanks to cpan-tester bob walker)
+        Polished the documentation
+        Defined requirements in Build.PL        

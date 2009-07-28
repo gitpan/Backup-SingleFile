@@ -1,12 +1,25 @@
 ---
 name: Backup-SingleFile
-version: 0.01
+version: 0.02
 author:
   - 'Ingo LANTSCHNER <ingo@boxbe.com>'
 abstract: "erstellt Backups einzelner Dateien (inkl. History)"
 license: perl
+requires:
+  Carp: 0
+  File::Basename: 0
+  File::Copy: 0
+  Time::localtime: 0
+  perl: 5.10.0
 build_requires:
+  File::Glob: 0
+  File::Path: 0
+  File::Spec::Functions: 0
+  FindBin: 0
+  SUPER: 0
+  Test::File: 0
   Test::More: 0
+  Test::Output: 0
 generated_by: Module::Build version 0.33
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -14,6 +27,6 @@ meta-spec:
 provides:
   Backup::SingleFile:
     file: lib/Backup/SingleFile.pm
-    version: 0.01
+    version: 0.02
 resources:
   license: http://dev.perl.org/licenses/

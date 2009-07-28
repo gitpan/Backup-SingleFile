@@ -10,7 +10,22 @@ my $builder = Module::Build::FilterTests->new(
     dist_author         => 'Ingo LANTSCHNER <ingo@boxbe.com>',
     dist_version_from   => 'lib/Backup/SingleFile.pm',
     build_requires => {
-        'Test::More' => 0,
+        'Test::More'                => 0,
+        'Test::File'                => 0,
+        'Test::Output'              => 0,
+        'FindBin'                   => 0,
+        'File::Path'                => 0,
+        'SUPER'                     => 0,
+        'File::Glob'                => 0,
+        'File::Spec::Functions'     => 0
+    },
+    requires => {
+                    'perl'              => '5.10.0',
+                    'Carp'              => '0',
+                    'File::Basename'    => '0',
+                    'Time::localtime'   => '0',
+                    'File::Copy'        => '0',
+                    
     },
     add_to_cleanup      => [ 'Backup-SingleFile-*' ],
     create_makefile_pl => 'traditional',

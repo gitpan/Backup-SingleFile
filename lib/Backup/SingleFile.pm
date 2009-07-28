@@ -5,19 +5,30 @@ use strict;
 
 =head1 NAME
 
+Backup::SingleFile - copies one file to a predefined backup-directory, appends the date and a counter for keeping the history.
+
 Backup::SingleFile - erstellt Backups einzelner Dateien (inkl. History)
+
+=head1 EXAMPLE
+
+	my $ok = File::SimpleBackup::backup_file("MyContacts.txt", "MyBackupDir");
+
+Creates a copy of MyContacts.txt named MyBackupDir/MyContacts_2009-07-19.txt (on the 19th of July 2009)
+
+If the same file copied again on the same day a second copy named MyBackupDir/MyContacts_2009-07-19_000.txt is created.
+ 
 
 =head1 TRANSLATIONS
 
-The documentatoin is still in German - a short description can be found in the README. If you want to help by translating, please drop me an email to <perl at lantschner.name>
+The following documentatoin is still in German - a short description can be found in the README. If you want to help speeding up the translating, please drop me an email to <perl at lantschner.name>
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 =head1 SYNOPSIS
@@ -57,13 +68,17 @@ use base qw(Exporter);
 
 Needs the following modules:
 
-=item Carp
+=over 4
 
-=item File::Basename
+=item * Carp
 
-=item Time::localtime
+=item * File::Basename
 
-=item File::Copy
+=item * Time::localtime
+
+=item * File::Copy
+
+=back
 
 =cut
 use Carp;

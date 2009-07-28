@@ -5,7 +5,7 @@ use warnings;
 
 use Test::More  tests => 20;
 use Backup::SingleFile qw{ append_date };
-use Smart::Comments;
+#use Smart::Comments;
 
 # ====================================
 # = Tests for function "append_date" =
