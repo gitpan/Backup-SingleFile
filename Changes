@@ -7,3 +7,7 @@ Revision history for Backup-SingleFile
         Removed unnecessary use Smart::Comments in one of the modules (thanks to cpan-tester bob walker)
         Polished the documentation
         Defined requirements in Build.PL        
+
+0.03    2009-08-12
+		bakdir accepts now pathes either terminated with slash or not
+		SUPER.pm now required for configure (should avoid failing so many CPAN-tests; thanks to David Golden)

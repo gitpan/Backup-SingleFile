@@ -1,10 +1,12 @@
 ---
 name: Backup-SingleFile
-version: 0.02
+version: 0.03
 author:
-  - 'Ingo LANTSCHNER <ingo@boxbe.com>'
+  - 'Ingo LANTSCHNER <perl@lantschner.name>'
 abstract: "erstellt Backups einzelner Dateien (inkl. History)"
 license: perl
+configure_requires:
+  SUPER: 0
 requires:
   Carp: 0
   File::Basename: 0
@@ -16,7 +18,6 @@ build_requires:
   File::Path: 0
   File::Spec::Functions: 0
   FindBin: 0
-  SUPER: 0
   Test::File: 0
   Test::More: 0
   Test::Output: 0
@@ -27,6 +28,6 @@ meta-spec:
 provides:
   Backup::SingleFile:
     file: lib/Backup/SingleFile.pm
-    version: 0.02
+    version: 0.03
 resources:
   license: http://dev.perl.org/licenses/

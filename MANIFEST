@@ -9,6 +9,7 @@ t/010-boilerplate.t
 t/020-append_date.t
 t/030-increment.t
 t/040-backup.t
+t/045-backup-sikdir_variations.t
 t/developer/050-backup_many.t
 t/developer/990-pod-coverage.t
 t/developer/980-pod.t

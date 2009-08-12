@@ -5,7 +5,8 @@
 use strict;
 use warnings;
 
-use Test::More  tests => 7;
+use Test::More  tests => 8;
+use Test::File;
 use File::Path;
 #use Smart::Comments;
 
@@ -31,7 +32,8 @@ $testroot = $1;
 ### checked testroot   : $testroot
 my $src_path = $testroot . '/Volumes/Garmin/';
 my $src_file = $src_path . 'Current.gpx';
-my $sik_dir = $testroot . '/MyBackups/Garmin/';
+my $sik_dir = $testroot . '/MyBackups/Garmin';
+my $sik_dir_slash = $testroot . '/MyBackups/Garmin/';
 
 our $FILES_TO_IGNORE = qr/^\.\.?$|\.DS_Store/;
 our $EMPTY = q{};
@@ -88,8 +90,11 @@ mkpath ($sik_dir);
 
 {
 	my ($res) = backup($src_file, $sik_dir);
-	is($res, 1, 'Backup of Current.gpx should succeed now - result should be 1');
+	is($res, 1, 'Backup of Current.gpx should succeed now.');
+	my ($res_slash) = backup($src_file, $sik_dir_slash);
+	is($res_slash, 1, 'Backup of Current.gpx with backupdir terminated with slash');
 }
+
 
 rmtree ($testroot);
 

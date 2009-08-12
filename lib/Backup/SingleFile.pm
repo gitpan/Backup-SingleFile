@@ -24,11 +24,11 @@ The following documentatoin is still in German - a short description can be foun
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 =head1 SYNOPSIS
@@ -162,8 +162,9 @@ Die Funktion backup() gibt 1 bei Erfolg und 0 bei Fehlschlag zurück.
 	}
 	my $iso_date = sprintf('%04d-%02d-%02d', $today->year+1900, $today->mon+1, $today->mday);
 	#### iso_date: $iso_date
+	$sik_dir =~ s/\/$//; # remove trailing slash
 	my($src_name, $src_dir, $src_ext) = fileparse($src_file, qr/\.[^.]*/);
-	my $sik_file = "$sik_dir" . "$src_name" . "$SEPERATOR" . "$iso_date" . "$src_ext";
+	my $sik_file = "$sik_dir" . q{/} . "$src_name" . "$SEPERATOR" . "$iso_date" . "$src_ext";
 	### sik_file: $sik_file
 
 	while ( -e $sik_file and -s $sik_file) {

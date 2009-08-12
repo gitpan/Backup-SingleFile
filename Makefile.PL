@@ -9,18 +9,17 @@ WriteMakefile
           'EXE_FILES' => [],
           'VERSION_FROM' => 'lib/Backup/SingleFile.pm',
           'PREREQ_PM' => {
-                           'File::Copy' => '0',
+                           'File::Copy' => 0,
                            'FindBin' => 0,
                            'File::Glob' => 0,
                            'Test::File' => 0,
-                           'Carp' => '0',
+                           'Carp' => 0,
                            'Test::More' => 0,
-                           'Time::localtime' => '0',
+                           'Time::localtime' => 0,
                            'File::Path' => 0,
                            'Test::Output' => 0,
-                           'SUPER' => 0,
                            'File::Spec::Functions' => 0,
-                           'File::Basename' => '0'
+                           'File::Basename' => 0
                          }
         )
 ;
