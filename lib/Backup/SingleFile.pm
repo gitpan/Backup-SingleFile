@@ -7,8 +7,6 @@ use strict;
 
 Backup::SingleFile - copies one file to a predefined backup-directory, appends the date and a counter for keeping the history.
 
-Backup::SingleFile - erstellt Backups einzelner Dateien (inkl. History)
-
 =head1 EXAMPLE
 
 	my $ok = File::SimpleBackup::backup_file("MyContacts.txt", "MyBackupDir");
@@ -24,11 +22,11 @@ The following documentatoin is still in German - a short description can be foun
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 
 =head1 SYNOPSIS

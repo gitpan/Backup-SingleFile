@@ -1,9 +1,9 @@
 ---
 name: Backup-SingleFile
-version: 0.03
+version: 0.04
 author:
   - 'Ingo LANTSCHNER <perl@lantschner.name>'
-abstract: "erstellt Backups einzelner Dateien (inkl. History)"
+abstract: copies one file to a predefined backup-directory, appends the date and a counter for keeping the history.
 license: perl
 configure_requires:
   SUPER: 0
@@ -18,6 +18,7 @@ build_requires:
   File::Path: 0
   File::Spec::Functions: 0
   FindBin: 0
+  Test::Cmd: 0
   Test::File: 0
   Test::More: 0
   Test::Output: 0
@@ -28,6 +29,6 @@ meta-spec:
 provides:
   Backup::SingleFile:
     file: lib/Backup/SingleFile.pm
-    version: 0.03
+    version: 0.04
 resources:
   license: http://dev.perl.org/licenses/

@@ -10,6 +10,7 @@ WriteMakefile
           'VERSION_FROM' => 'lib/Backup/SingleFile.pm',
           'PREREQ_PM' => {
                            'File::Copy' => 0,
+                           'Test::Cmd' => 0,
                            'FindBin' => 0,
                            'File::Glob' => 0,
                            'Test::File' => 0,

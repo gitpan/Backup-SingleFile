@@ -11,3 +11,6 @@ Revision history for Backup-SingleFile
 0.03    2009-08-12
 		bakdir accepts now pathes either terminated with slash or not
 		SUPER.pm now required for configure (should avoid failing so many CPAN-tests; thanks to David Golden)
+		
+0.04    2009-08-13
+        Added an other dependency to Build.PL

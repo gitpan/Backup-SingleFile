@@ -16,6 +16,7 @@ my $builder = Module::Build::FilterTests->new(
         'Test::More'                => 0,
         'Test::File'                => 0,
         'Test::Output'              => 0,
+        'Test::Cmd'                 => 0,
         'FindBin'                   => 0,
         'File::Path'                => 0,
         'File::Glob'                => 0,
