@@ -14,3 +14,6 @@ Revision history for Backup-SingleFile
 		
 0.04    2009-08-13
         Added an other dependency to Build.PL
+        
+0.05    2009-08-14
+        045-backup-variations.t is now TZ-aware (should not fail in GMT now)

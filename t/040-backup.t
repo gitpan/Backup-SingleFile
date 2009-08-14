@@ -1,4 +1,4 @@
-#!/usr/bin/perl -T
+#!/usr/bin/perl -w
 
 # $Id: cea86a3bba88d7bde591b384160655de1ba85a47 $
 
@@ -11,6 +11,12 @@ use File::Path;
 #use Smart::Comments;
 
 use Backup::SingleFile qw{backup};
+
+#
+# Test the backup-function with small and large files
+# only checks the returnvalue, not if the file is really there
+#
+
 use FindBin qw($Bin);
 my $testroot = "$Bin/testroot.tmp";
 ### unchecked testroot : $testroot
@@ -30,6 +36,8 @@ $testroot =~ m{
 
 $testroot = $1;
 ### checked testroot   : $testroot
+
+# TODO: Check, if this works in Windows (Slash vs. Backslash)
 my $src_path = $testroot . '/Volumes/Garmin/';
 my $src_file = $src_path . 'Current.gpx';
 my $sik_dir = $testroot . '/MyBackups/Garmin';
@@ -71,7 +79,7 @@ dir_is_empty($testroot) or die ("ERROR: Test-directory ($testroot) is NOT empty 
 	is($res, 0, 'Result should be 0');
 }
 
-mkpath ($src_path);
+mkpath $src_path;
 
 {	my ($res) = backup($src_file, $sik_dir);
 	is($!, 'No such file or directory', 'Source-path exists, but no source-file and dest (backup-dir) yet');
@@ -86,14 +94,17 @@ create_sourcefile();
 	is($res, 0, 'Result should be 0');
 }
 
-mkpath ($sik_dir);
+mkpath $sik_dir;
 
-{
-	my ($res) = backup($src_file, $sik_dir);
-	is($res, 1, 'Backup of Current.gpx should succeed now.');
-	my ($res_slash) = backup($src_file, $sik_dir_slash);
-	is($res_slash, 1, 'Backup of Current.gpx with backupdir terminated with slash');
+{   # Backup-dir WITH OUT slash at the end
+    my ($res) = backup($src_file, $sik_dir);
+    is($res, 1, 'Backup of Current.gpx should succeed now.');
+    
+    # Backup-dir WITH  slash at the end
+    my ($res_slash) = backup($src_file, $sik_dir_slash);
+    is($res_slash, 1, 'Backup of Current.gpx with backupdir terminated with slash');
 }
+
 
 
 rmtree ($testroot);

@@ -1,6 +1,6 @@
 ---
 name: Backup-SingleFile
-version: 0.04
+version: 0.05
 author:
   - 'Ingo LANTSCHNER <perl@lantschner.name>'
 abstract: copies one file to a predefined backup-directory, appends the date and a counter for keeping the history.
@@ -29,6 +29,6 @@ meta-spec:
 provides:
   Backup::SingleFile:
     file: lib/Backup/SingleFile.pm
-    version: 0.04
+    version: 0.05
 resources:
   license: http://dev.perl.org/licenses/
