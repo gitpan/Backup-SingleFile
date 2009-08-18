@@ -1,6 +1,6 @@
 ---
 name: Backup-SingleFile
-version: 0.05
+version: 0.06
 author:
   - 'Ingo LANTSCHNER <perl@lantschner.name>'
 abstract: copies one file to a predefined backup-directory, appends the date and a counter for keeping the history.
@@ -12,7 +12,7 @@ requires:
   File::Basename: 0
   File::Copy: 0
   Time::localtime: 0
-  perl: 5.10.0
+  perl: 5.8.0
 build_requires:
   File::Glob: 0
   File::Path: 0
@@ -22,13 +22,13 @@ build_requires:
   Test::File: 0
   Test::More: 0
   Test::Output: 0
-generated_by: Module::Build version 0.33
+generated_by: Module::Build version 0.3
 meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
 provides:
   Backup::SingleFile:
     file: lib/Backup/SingleFile.pm
-    version: 0.05
+    version: 0.06
 resources:
   license: http://dev.perl.org/licenses/

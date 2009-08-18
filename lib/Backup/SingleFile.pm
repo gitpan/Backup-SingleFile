@@ -1,5 +1,6 @@
 package Backup::SingleFile;
-use 5.010_000; use 5.10.0; # perl 5.10, revision 5 version 10 subversion 0
+#use 5.010_000; use 5.10.0; # perl 5.10, revision 5 version 10 subversion 0
+use 5.008_000; use 5.8.0; 
 use warnings;
 use strict;
 
@@ -22,11 +23,11 @@ The following documentatoin is still in German - a short description can be foun
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 
 =head1 SYNOPSIS

@@ -23,7 +23,7 @@ my $builder = Module::Build::FilterTests->new(
         'File::Spec::Functions'     => 0,
     },
     requires => {
-        'perl'                      => '5.10.0',
+        'perl'                      => '5.8.0',
         'Carp'                      => 0,
         'File::Basename'            => 0,
         'Time::localtime'           => 0,

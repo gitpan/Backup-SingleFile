@@ -17,3 +17,6 @@ Revision history for Backup-SingleFile
         
 0.05    2009-08-14
         045-backup-variations.t is now TZ-aware (should not fail in GMT now)
+        
+0.06    2009-08-17 
+        use 5.008_000; use 5.8.0; instead of 5.10
