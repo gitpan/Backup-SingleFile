@@ -21,6 +21,7 @@ my $builder = Module::Build::FilterTests->new(
         'File::Path'                => 0,
         'File::Glob'                => 0,
         'File::Spec::Functions'     => 0,
+        'SUPER'                     => 0,
     },
     requires => {
         'perl'                      => '5.8.0',

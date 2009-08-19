@@ -19,6 +19,7 @@ WriteMakefile
                            'Time::localtime' => 0,
                            'File::Path' => 0,
                            'Test::Output' => 0,
+                           'SUPER' => 0,
                            'File::Spec::Functions' => 0,
                            'File::Basename' => 0
                          }

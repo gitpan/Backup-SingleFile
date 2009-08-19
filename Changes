@@ -20,3 +20,6 @@ Revision history for Backup-SingleFile
         
 0.06    2009-08-17 
         use 5.008_000; use 5.8.0; instead of 5.10
+    
+0.07    2009-08-19
+        Changes in t/020-append_date.t to make it more robust 
