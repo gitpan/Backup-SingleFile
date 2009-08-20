@@ -19,15 +19,15 @@ If the same file copied again on the same day a second copy named MyBackupDir/My
 
 =head1 TRANSLATIONS
 
-The following documentatoin is still in German - a short description can be found in the README. If you want to help speeding up the translating, please drop me an email to <perl at lantschner.name>
+The following documentation is still in German - a short description can be found in the README. If you want to help speeding up the translating, please drop me an email to <perl at lantschner.name>
 
 =head1 VERSION
 
-Version 0.07
+Version 0.08
 
 =cut
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 =head1 SYNOPSIS
