@@ -10,7 +10,7 @@ WriteMakefile
           'VERSION_FROM' => 'lib/Backup/SingleFile.pm',
           'PREREQ_PM' => {
                            'Test::Cmd' => '1.05',
-                           'FindBin' => '1.49',
+                           'FindBin' => 0,
                            'Test::NoWarnings' => '0.084',
                            'Time::localtime' => '1.02',
                            'File::Path' => 0,
@@ -20,8 +20,10 @@ WriteMakefile
                            'File::Copy' => '2.13',
                            'File::Glob' => 0,
                            'Test::File' => '1.29',
+                           'Sub::Identify' => 0,
+                           'Exporter' => 0,
                            'Carp' => 0,
-                           'Test::More' => '0.62',
+                           'Test::More' => '0.8',
                            'SUPER' => 0,
                            'File::Basename' => 0
                          }
