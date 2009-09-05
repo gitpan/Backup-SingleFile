@@ -26,3 +26,7 @@ Revision history for Backup-SingleFile
 
 0.09    2009-09-03 
         Changes in Build.PL in order to satisfy CPAN-Tests
+
+0.10    2009-09-05
+        Minor changes to make build-process more portable; improved UI
+        
