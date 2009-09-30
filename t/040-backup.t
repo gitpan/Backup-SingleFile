@@ -76,14 +76,14 @@ dir_is_empty($testroot) or die ("ERROR: Test-directory ($testroot) is NOT empty 
 
 {
 	my ($res) = backup($src_file, $sik_dir);
-	is($!, 'No such file or directory', 'Neither src-path nor dest exist.');
+	is( ($! * 1), 2, 'Neither src-path nor dest exist ==> No such file or directory (errno 2)');
 	is($res, 0, 'Result should be 0');
 }
 
 mkpath $src_path;
 
 {	my ($res) = backup($src_file, $sik_dir);
-	is($!, 'No such file or directory', 'Source-path exists, but no source-file and dest (backup-dir) yet');
+	is( ($! * 1), 2, 'Source-path exists, but no source-file and dest (backup-dir) yet ==> No such file or directory (errno 2)');
 	is($res, 0, 'Result should be 0');
 }
 
@@ -91,7 +91,7 @@ create_sourcefile();
 
 {
 	my ($res) = backup($src_file, $sik_dir);
-	is($!, 'No such file or directory', 'Source-files exist, but backup-dir is still missing');
+	is(($! * 1), 2, 'Source-files exist, but backup-dir is still missing ==> No such file or directory (errno 2)');
 	is($res, 0, 'Result should be 0');
 }
 
