@@ -4,6 +4,10 @@ use 5.008_000; use 5.8.0;
 use warnings;
 use strict;
 
+=pod
+
+=encoding utf8
+
 =head1 NAME
 
 Backup::SingleFile - copies one file to a predefined backup-directory, appends the date and a counter for keeping the history.
@@ -23,11 +27,11 @@ The following documentation is still in German - a short description can be foun
 
 =head1 VERSION
 
-Version 0.10
+Version 0.12
 
 =cut
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 
 =head1 SYNOPSIS
