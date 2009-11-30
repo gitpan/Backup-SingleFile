@@ -1,6 +1,6 @@
 ---
 name: Backup-SingleFile
-version: 0.12
+version: 0.13
 author:
   - 'Ingo LANTSCHNER <perl@lantschner.name>'
 abstract: 'copies one file to a predefined backup-directory, appends the date and a counter for keeping the history.'
@@ -35,7 +35,7 @@ build_requires:
 provides:
   Backup::SingleFile:
     file: lib/Backup/SingleFile.pm
-    version: 0.12
+    version: 0.13
 generated_by: Module::Build version 0.3
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

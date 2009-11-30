@@ -1,5 +1,4 @@
 package Backup::SingleFile;
-#use 5.010_000; use 5.10.0; # perl 5.10, revision 5 version 10 subversion 0
 use 5.008_000; use 5.8.0; 
 use warnings;
 use strict;
@@ -14,33 +13,58 @@ Backup::SingleFile - copies one file to a predefined backup-directory, appends t
 
 =head1 EXAMPLE
 
-	my $ok = File::SimpleBackup::backup_file("MyContacts.txt", "MyBackupDir");
+=over 5
+
+=item
+my $ok = File::SimpleBackup::backup_file("MyContacts.txt", "MyBackupDir");
+
+=back
 
 Creates a copy of MyContacts.txt named MyBackupDir/MyContacts_2009-07-19.txt (on the 19th of July 2009)
-
 If the same file copied again on the same day a second copy named MyBackupDir/MyContacts_2009-07-19_000.txt is created.
- 
 
 =head1 TRANSLATIONS
 
-The following documentation is still in German - a short description can be found in the README. If you want to help speeding up the translating, please drop me an email to <perl at lantschner.name>
+The following documentation is still in German - a short English description can 
+be found in the README. 
+
+A first draft translation has been provided by Chuck Butler - it is included in 
+the raw-pod text. If you want to help speeding up the translating, please drop 
+me an email to <perl at lantschner.name>
 
 =head1 VERSION
 
-Version 0.12
+Version 0.13
 
 =cut
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 
 =head1 SYNOPSIS
 
 Dieses Modul kopiert eine Datei in ein vordefiniertes Backupverzeichnis. Dabei wir das Datum im ISO-Format (YYYY-MM-DD) angehängt und ggf. durch einen Zähler ergänzt. Im Backup-Verzeichnis vorhandene Sicherungskopien, werden also niemals gelöscht.
 
-Typischer Anwendungsfall ist die Erstellung von Sicherungskopien einzelner Dateien von z.B. mobilen Geräten auf einen Computer.
+=for English_Literal
+ This module copies a file in a predefined Backupverzeichnis. Besides, we the date in the ISO format (YYYY-MM-DD) suspended and if necessary with a counter complements. In the Backup list available backup copies, are never extinguished.
 
-Beispiel:
+This module copies a file into a predefined backup directory. 
+Also, we the date in the ISO format (YYYY-MM-DD) appended, and if necessary, a counter is added to the end. 
+In the backup directory, the available backup copies are never deleted -or- overwritten.
+
+Typischer Anwendungsfall ist die Erstellung von Sicherungskopien einzelner 
+Dateien von z.B. mobilen Geräten auf einen Computer.
+
+=for English_Literal
+ Typical application case is the production of backup copies of single files of e.g. mobile devices on a computer.
+
+Typical use for this application is to produce a backup of single files of e.g. 
+mobile devices on a computer.
+
+=for German
+ Beispiel:
+
+Example:
 
     use File::SimpleBackup;
 	my $src_file = "/Volumes/Garmin/Current.gpx";
@@ -53,15 +77,33 @@ Dieser Beispiel-Code kopiert am 28. 06. 2008 die Current.gpx eines unter /Volume
 Verzeichnis MyBackups/Garmin und legt diese dort unter dem Namen Current_2009-06-28.gpx ab. Bei weiteren 
 Aufrufen am selben Kalendertag, wird ein Zähler angehängt (Current_2009-06-28_000.gpx, Current_2009-06-28_001.gpx).
 
+=for English_Literal
+ This example code copies on 28.06.2008 the Current.gpx one under /Volumes/Garmin hung up GPS device in this 
+ List MyBackups/Garmin and files this there under the name Current_2009-06-28.gpx. With other ones 
+ To calls in the same calender date, a counter is suspended (Current_2009-06-28_000.gpx, Current_2009-06-28_001.gpx).
+
+=for English_please_improve
+This example copies on 28.06.2008, 28 Jun 2008, the file 'Current.gpx' under 
+/Volumes/Garmin from the GPS device into this directory  MyBackups/Garmin and 
+saves it there under the name 'Current_2009-06-28.gpx'. The following 
+calls that are in the same calender date, a counter is appended (Current_2009-06-28_000.gpx, Current_2009-06-28_001.gpx).
+
 =head1 EXPORT
 
 backup - Argumente und Optionen siehe unten
 
+backup - arguments and options see below
+
 append_date - Anhängen des Datums an den Dateinamen (vor die Extension)
+
+append_date - To appendices of the date in the file name (before the extension)
 
 increment - hochzählen des angehängten Zählers bis 999
 
+increment - High-level count of the appended counter to 999 (translation?!?!)
+
 =cut
+
 our @EXPORT_OK = qw( backup append_date increment );
 use base qw(Exporter);
 
@@ -84,6 +126,7 @@ Needs the following modules:
 =back
 
 =cut
+
 use Carp;
 use File::Basename;
 use Time::localtime;
@@ -114,18 +157,40 @@ sub backup {
 
 Diese Funktion benötigt zwei Parameter:
 
+This function needs two parameters:
+
 src_file: Die zu kopierende Datei. Pfad entweder absolut oder relativ zum Arbeitsverzeichnis.
+
+src_file: The file to be copied. Path either absolutely or relatively to the working directory.
 
 sik_dir: Das Verzeichnis, in dem die Sicherungsdateien abgelegt werden.
 
-=head3 OPTIONEN
+sik_dir: The directory in which the backup files are saved.
+
+=head3 OPTIONS
 
 time: UNIX-Time (Epochensekunden) für den Zeitstempel, Voreinstellung ist die aktuelle Systemzeit
+
+=for English_Literal
+ time: UNIX time (epoch seconds) for the time stamp, pre-setting are the topical system time
+
+time: UNIX time (epoch seconds) for the time stamp, which is the default setting for system time
 
 seperator: Dateiname und Suffix (Datum bzw. Datum plus Zähler) werden meist durch Leerzeichen oder Underscore getrennt. 
 Der Underscore ist die sicherere Wahl, da er auf wohl allen Plattformen akzeptiert wird. Das Leerzeichen 
 ist dafür schöner und wird inzwischen in vielen Dateisystemen als gültiges Zeichen in Dateinamen akzeptiert. 
 Die Voreinstellung ist aber der Underscore. Zusätzlich werden noch Dash und Hashmark unterstützt.
+
+for English_Literal
+ seperator: File name and suffix (date or date plus counter) are mostly separated by blank or Underscore. 
+ The Underscore is the more sure choice, because he is accepted on probably all platforms. The blank 
+ is nicer for it and is accepted, in the meantime, in many file systems as a valid sign in file names. 
+ However, the pre-setting is the Underscore. In addition, Dash and Hashmark are still supported.
+
+seperator: File name and suffix (date or date plus counter) are mostly separated by blank or Underscore. 
+The Underscore is the more sure choice, because he is accepted on probably all platforms. The blank 
+is nicer for it and is accepted, in the meantime, in many file systems as a valid sign in file names. 
+However, the default is the Underscore. In addition, Dash and Hashmark are still supported.
 
 increment_existing: Wenn 1 (wahr), dann werden bei nochmaligem Aufruf am selben Tag weitere Backups angelegt indem 
 ein an den Dateinamen angehängter, 3-stelliger Zähler jeweils hoch gezählt wird. So sind insgesamt 1001 Backups je 
@@ -134,9 +199,19 @@ Bei Übergabe einer zu sichernden Datei (src_file) mit dem Suffix 999 wird abgeb
 Ist diese Option 0 oder undef (falsch), kann nur eine Sicherungskopie je Tag angelegt werden. 
 Die Voreinstellung ist 1. Siehe auch das Beispiel in SYNOPSIS oben.
 
-=head3 RÜCKGABEWERT
+
+increment_existing: If 1 (true), then other Backups are being added by repeated calls during the same day while 
+a 3-figure counter appended to the file name in each case is incremented. Thus a maximum of 1001 Backups are possible 
+for one day(file Date, File Date 000, file Date 001... File Date 999). 
+If called with a file to be backed up (src_file) with the suffix 999 it is terminated, and an error is given.
+If this option 0 or undef is (wrong, only one backup copy can be put on day. 
+The pre-setting is 1. See the also example in SYNOPSIS on top.
+
+=head3 RETURN VALUE
 
 Die Funktion backup() gibt 1 bei Erfolg und 0 bei Fehlschlag zurück.
+
+The function backup () returns 1 with success and 0 with miss.
 
 =cut
 
@@ -202,20 +277,32 @@ Diese Funktion hängt an einen als erstes Argument übergebenen Dateinamen das T
 Wird kein zweites Argument übergeben, so verwendet diese Funktion die aktuelle UNIX-Time des Systems, andernfalls
 die als zweites Argument übergebene Zeit (UNIX-Time, also Epochensekunden).
 
+This function suspends the day date in the ISO format to a file name handed over as the first argument. 
+If no second argument hands over, this function uses the topical UNIX time of the system, otherwise
+the time handed over as the second argument (UNIX time, thus epoch seconds).
+
 	$new_filename = append_date("Current.gpx");
 	print "$new_filename";
-	# gibt am 13. 02. 2009 "Current_2009-02-13.gpx" aus 
-
+ *-->DE	# gibt am 13. 02. 2009 "Current_2009-02-13.gpx" aus 
+        # "Current_2009-02-13.gpx" is returned, when the date is 13 Feb 2009
+        
+        
 	$new_filename = append_date("Current.gpx", 1234567890);
 	print "$new_filename";
-	# gibt "Current_2009-02-14.gpx" aus - unabhängig vom aktuellen Datum
+ *-->DE	# gibt "Current_2009-02-14.gpx" aus - unabhängig vom aktuellen Datum
+        # "Current_2009-02-14.gpx" is returned, using the value to over-ride the default system date
 
-Die Erstellung des Strings für das Datum erfolgt passend zur jeweiligen Zeitzone des Systems.	
+Die Erstellung des Strings für das Datum erfolgt passend zur jeweiligen Zeitzone des Systems.
+
+The string for the date is created with respect to the time zone setting of the system.
 
 =head3 VARIABLES
 
 Ist die Variable $SEPERATOR gesetzt, wird das darin gespeicherte Zeichen als Trennzeichen zwischen
 Dateiname und Datums-Suffix verwendet. Andernfalls wird der Underscore verwendet.
+
+If the variable $SEPERATOR is set, the sign stored in it becomes as a separator between
+File name and data suffix uses. Otherwise the Underscore is used.
 
 	$SEPERATOR = q{_} ==> Current_2009-02-13.gpx  # Underscore
 	$SEPERATOR = q{ } ==> Current 2009-02-13.gpx  # Space
@@ -223,10 +310,13 @@ Dateiname und Datums-Suffix verwendet. Andernfalls wird der Underscore verwendet
 	$SEPERATOR = q{-} ==> Current-2009-02-13.gpx  # Dash
 
 
-=head3 RÜCKGABEWERT und FEHLERMELDUNGEN
+=head3 RETURN VALUE and ERROR MESSAGES
 
 Die Funktion gibt undef zurück, wenn Fehler aufgetreten sind. 
-GGf. werden zuvor noch Fehlermeldungen nach stderr ausgegeben. 
+GGf. werden zuvor noch Fehlermeldungen nach stderr ausgegeben.
+
+The function returns undef if an error has occurred. 
+If necessary, an error messages is printed to STDERR.
 
 =cut	
 
@@ -278,19 +368,29 @@ Bei der Übergabe von Dateien, deren Namen bereits mit einem solchen Zähler end
 höheren Zähler retourniert. Bei Übergabe eines Dateinamens mit 999 am Ende, wird eine Fehlermeldung nach stderr ausgegeben. 
 Der Rückgabewert ist in diesem Fall undef.
 
+This function appends a 3-figure counter to a file name handed over as the first argument: 000, 001...
+By the handing over of the files whose name already ends with such a counter the file name with becomes afterwards 
+higher counter returns. By handing over of a file name with 999 at the end, an error message is given after stderr. 
+In this case the return value is undef.
+
 	$new_filename = increment(Current_2009-06-23.gpx);
 	print "$new_filename";
-	# gibt "Current_2009-06-23_000.gpx" aus
+ *->DE	# gibt "Current_2009-06-23_000.gpx" aus
+ *->LT	# if "Current_2009-06-23_000.gpx" is economical
+ 	# "Current_2009-06-23_000.gpx" would be the first backup for "Current_2009-06-23.gpx"
 
 	$new_filename = increment(Current_2009-06-23_000.gpx);
 	print "$new_filename";
-	# gibt "Current_2009-06-23_001.gpx" aus
+ *->DE	# gibt "Current_2009-06-23_001.gpx" aus
+	# "Current_2009-06-23_000.gpx" would be the second backup
 
 	$new_filename = increment(somefile.gpx);
 	print "$new_filename";
-	# gibt "somefile_000.gpx" aus
+ *->DE	# gibt "somefile_000.gpx" aus
+	# "somefile_000.gpx" would be the first backup for "somefile.gpx"
 
 =cut
+
 	my $file = shift;
 	if ( not defined $file) { return; }
 	my $sep;
@@ -387,7 +487,6 @@ Copyright 2009 Ingo Lantschner, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
-
 
 =cut
 
